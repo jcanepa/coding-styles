@@ -44,7 +44,7 @@ def knock_on_door(guest):
         return bounce()
 
     # code valid
-    if not (guest.code in expired_codes):
+    if guest.code in expired_codes:
         return bounce()
 
     # invalidate code
