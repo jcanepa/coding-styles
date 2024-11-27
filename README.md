@@ -14,3 +14,13 @@ This coding style builds on the naïve aproach, and attempts to reduce or remove
 
 ## Clever
 This is the most terse style, which heaviliy relies on programming language constructs that may not be widely familiar to all programmers. Some might call this "cryptic", in that there is nothing other than the neccesary. It may be harder to read and understand on a line-by-line basis, but it is likely easier to understand concepturally due to abstractions in place of procedural detail. This style heavily relies on comment documentation, and may require the reader to research how it works in order to maintain (change) it.
+
+## Scenario
+A secret club's guest list:
+- select non-members are on a guest list
+- they will arrive with a code, multiple people might have the same code
+- guests arrive in sequence and tell us their name and a code
+- we check whether or not they are on the list
+- if they are, we check whether the code is registered to them
+- if it is, we "let them in" and mark the code as expired
+- if their name is not on the list, or the code they have is invalid, they are sent away

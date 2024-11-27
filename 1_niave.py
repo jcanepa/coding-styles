@@ -1,12 +1,3 @@
-# scenario: a secret club's guest list
-# select non-members are on a guest list
-# they will arrive with a code, multiple people might have the same code
-# guests arrive and tell us their name and a code
-# check whether or not they are on the list
-# if they are, we check whether the code is registered to them
-# if it is, we "let them in" and mark the code as expired
-# if their name is not on the list, or the code they have is invalid, they are sent away
-
 # codes
 p_1 = "oof"
 p_2 = "rab"
