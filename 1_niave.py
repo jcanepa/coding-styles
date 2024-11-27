@@ -4,7 +4,7 @@
 # guests arrive and tell us their name and a code
 # check whether or not they are on the list
 # if they are, we check whether the code is registered to them
-# if it is, we "let them in" and check their name off and mark the code as expired
+# if it is, we "let them in" and mark the code as expired
 # if their name is not on the list, or the code they have is invalid, they are sent away
 
 # codes
@@ -24,13 +24,8 @@ guest_list = {
 expired_codes = []
 
 class Guest:
-    name: str
-    code: str
-
     def __init__(self, name, code):
         """
-        Initialize a new Guest instance.
-
         :param name: The name of the guest.
         :param code: The code associated with the guest.
         """
@@ -44,14 +39,29 @@ class Guest:
         return f"Guest(name='{self.name}', code='{self.code}')"
 
 def knock_on_door(guest):
-    print(guest.name, 'is attempting to get in with code', guest.code)
+    print(
+        guest.name,
+        'is attempting to get in with code',
+        guest.code)
 
-    if not is_on_list(guest.name): return
+    # verify guest is on the list
+    if not name in guest_list:
+        return bounce()
 
-    # name is on list, check the promo code
+    # verify code is assigned to guest
+    if not guest.code == guest_list[guest.name]:
+        return bounce()
 
-def is_on_list(name):
-    return name in guest_list
+    # code valid
+    if not (guest.code in expired_codes):
+        return bounce()
+
+    # invalidate code
+    expired_codes.append(guest.code)
+    print('welcome in!')
+
+def bounce():
+    print('get lost')
 
 guests = []
 for name, code in guest_list.items():
